@@ -155,6 +155,7 @@ Experiments were conducted on CIFAR-10 using a reduced OFA supernet.
 - 4. Observing accuracies
 	 - Iterate through the config space and observe MACs, Accuracy, Accuracy #25.
 	 - Subnet is fine-tuned for 25 epochs using SGD optimizer and cosine scheduler with initial learning rate of 2e-5.
+  
 	This part is implemented using `iterate_config_space()`, `evaluate()`, `train_one_epoch()` functions and `calflops` library.
 
 Note: While training the subnet, knowledge distillation is omitted due to computational limit.
