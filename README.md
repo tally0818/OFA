@@ -54,7 +54,7 @@ In this codebase:
 
 
 > [Figure 2] Progressive Shrinking Procedure.
-> (illustrative figure recreated from the paper)
+![](/imgs/PS.png)
 
 ---
 
@@ -68,32 +68,30 @@ The implementation includes:
  Convolution layers with elastic kernel size and width support, applying kernel transformations for different sizes.
 
 > [Figure 3] Architecture of an ElasticConv.
-
+![](/imgs/Elastic_Conv.png)
 - **ElasticSqueezeAndExcite**:
   Squeeze-and-excite operation with elastic input channel support.
 
 > [Figure 4] Architecture of an ElasticSqueezeAndExcite.
-
+![](/imgs/Elastic_SE.png)
 - **ElasticMBblock**:
   MobileNetV3-like blocks with depthwise separable convolutions and Squeeze-and-Excitation (SE) modules.
 
 > [Figure 5] Architecture of an ElasticMBblock.
-
+![](/imgs/Elastic_MBblock.png)
 - **Kerenl transform matrix**:
   Changes ElasticMBblocks kernel size to support elastic kernel size.
 
 > [Figure 6] Kernel transforming Procedure.
-
+![](/imgs/Kernel_Transform_Matrix.png)
 - **ElasticUnit**:
   A stack of ElasticMBblocks, supporting elastic depth.
-
-> [Figure 7] Architecture of an ElasticUnit.
 
 - **OFAnet**:
   Full supernet with stem, units, final layer, global pooling, and classifier.
 
 > [Figure 8] Architecture of an OFAnet.
-
+![](/imgs/macro_structure.png)
 - **ProgressiveShrinking**:
   Shrink the supernet following the given config and return the fixed subnet.
 
