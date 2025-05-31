@@ -44,7 +44,9 @@ Instead of training every possible sub-network separately, the OFA approach uses
 2. **Shrink one dimension at a time**, gradually expanding support for more subnetworks:
    - Shrink kernel size using kernel transfor matrices.
    - Shrink depth by keeping the first d layers.
+     ![](/imgs/Elastic_depth.PNG)
    - Shrink width by reorganizng models channels according to their importance (in this case, L1-norm)
+     ![](/imgs/Elastic_width.PNG)
 
 Thus, the supernet becomes capable of supporting many subnetworks efficiently.
 
