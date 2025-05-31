@@ -44,8 +44,10 @@ Instead of training every possible sub-network separately, the OFA approach uses
 2. **Shrink one dimension at a time**, gradually expanding support for more subnetworks:
    - Shrink kernel size using kernel transfor matrices.
    - Shrink depth by keeping the first d layers.
+     > [Figure 2] Progressively shrinking depth. 
      ![](/imgs/Elastic_depth.PNG)
    - Shrink width by reorganizng models channels according to their importance (in this case, L1-norm)
+     > [Figure 3] Progressively shrinking width.
      ![](/imgs/Elastic_width.PNG)
 
 Thus, the supernet becomes capable of supporting many subnetworks efficiently.
@@ -55,7 +57,7 @@ In this codebase:
 - `ProgressiveShrinking()` applies a given config (combination of {k, d, w}) to the supernet and extractes the subnet via `get_fixed_Subnet()`.
 
 
-> [Figure 2] Progressive Shrinking Procedure.
+> [Figure 4] Progressive Shrinking Procedure.
 ![](/imgs/PS.png)
 
 ---
@@ -69,22 +71,22 @@ The implementation includes:
 - **ElasticConv**:
  Convolution layers with elastic kernel size and width support, applying kernel transformations for different sizes.
 
-> [Figure 3] Architecture of an ElasticConv.
+> [Figure 5] Architecture of an ElasticConv.
 ![](/imgs/Elastic_Conv.png)
 - **ElasticSqueezeAndExcite**:
   Squeeze-and-excite operation with elastic input channel support.
 
-> [Figure 4] Architecture of an ElasticSqueezeAndExcite.
+> [Figure 6] Architecture of an ElasticSqueezeAndExcite.
 ![](/imgs/Elastic_SE.png)
 - **ElasticMBblock**:
   MobileNetV3-like blocks with depthwise separable convolutions and Squeeze-and-Excitation (SE) modules.
 
-> [Figure 5] Architecture of an ElasticMBblock.
+> [Figure 7] Architecture of an ElasticMBblock.
 ![](/imgs/Elastic_MBblock.png)
 - **Kerenl transform matrix**:
   Changes ElasticMBblocks kernel size to support elastic kernel size.
 
-> [Figure 6] Kernel transforming Procedure.
+> [Figure 8] Kernel transforming Procedure.
 ![](/imgs/Kernel_Transform_Matrix.png)
 - **ElasticUnit**:
   A stack of ElasticMBblocks, supporting elastic depth.
@@ -92,7 +94,7 @@ The implementation includes:
 - **OFAnet**:
   Full supernet with stem, units, final layer, global pooling, and classifier.
 
-> [Figure 8] Architecture of an OFAnet.
+> [Figure 9] Architecture of an OFAnet.
 ![](/imgs/macro_structure.png)
 - **ProgressiveShrinking**:
   Shrink the supernet following the given config and return the fixed subnet.
