@@ -149,25 +149,25 @@ Experiments were conducted on CIFAR-10 using a reduced OFA supernet.
 	This part is implemented as `train_OFAnet()` function.
 
 - 4. Observing accuracies
-	 - Iterate through the config space and observe MACs, Accuracy, Accuracy #25
-
+	 - Iterate through the config space and observe MACs, Accuracy, Accuracy #25.
+	 - Subnet is fine-tuned for 25 epochs using SGD optimizer and cosine scheduler with initial learning rate of 2e-5.
 	This part is implemented using `iterate_config_space()`, `evaluate()`, `train_one_epoch()` functions and `calflops` library.
 
-Note: While training, knowledge distillation is omitted due to computational limit.
+Note: While training the subnet, knowledge distillation is omitted due to computational limit.
 
 ## 3. Results
 
  [Table 2] MACs, and accuracies of subnets for different configs
 > | Config: (k, d, w) | MACs | Accuracy | Accuracy #25 |
 > |:---:|:---:|:---:|:---:|
-> | (5, 2, 2) |   |||
-> | (5, 2, 4) |   |||
-> | (5, 3, 2) |   |||
-> | (5, 3, 4) |   |||
-> | (7, 2, 2) |   |||
-> | (7, 2, 4) |   |||
-> | (7, 3, 2) |   |||
-> | (7, 3, 4) |   |||
+> | (5, 2, 2) | 281.76M | 0.1003 | 0.1551 |
+> | (5, 2, 4) | 297.26M | 0.1011 | 0.1759 |
+> | (5, 3, 2) | 286.95M | 0.0947 | 0.1005 |
+> | (5, 3, 4) | 391.43M | 0.1006 | 0.1021 |
+> | (7, 2, 2) | 281.91M | 0.1058 | 0.1736 |
+> | (7, 2, 4) | 297.75M | 0.1213 | 0.1666 |
+> | (7, 3, 2) | 287.29M | 0.098 | 0.1 |  
+> | (7, 3, 4) | 393.5M | 0.1126 | 0.1015 |
 
 
 Note: Accuracy #25 denotes the accuracy after fine-tuning the subnet for 25 epochs.
